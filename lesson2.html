@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>lesson2</title>
+    </head>
+    <body>
+    </body>
+    <script>
+
+// Задание 1.
+    // var a = 1, b = 1, c, d;
+    // c = ++a; alert(c);           // 2 - префиксный инкремент, сначала сложение, потом использование в выражении
+    // d = b++; alert(d);           // 1 - постфиксный инкремент, сложение после исп. выражения
+    // c = (2+ ++a); alert(c);      // 5 - также, как и в первом случае, a=2 была при первом инкрементировании, до выполнения выражения
+    //                              // прибавляется еще 1, след. c = 5
+    // d = (2+ b++); alert(d);      // 4 - снова постфиксный инкремент, b = 2, после выражения(2) 
+    // alert(a);                    // 3 - т.к. после инкрементирования стояли выражения, то обе переменный в этом месте будут равны 3.
+    // alert(b);                    // 3
+
+// Задание 2.
+    // var a = 2;
+    // var x = 1 + (a *= 2); // как в математике, сначала выполняются выражения в скобках, где a = 4 (префикс)
+
+// Задание 3.
+    function task3(){
+        var a = +prompt('Задайте значение а: ');
+        var b = +prompt('Задайте значение b: ');
+        if (a >= 0 && b >= 0){
+            alert(a - b);
+        } else if(a < 0 && b < 0){
+            alert(a * b);
+        } else if ((a < 0 && b >= 0) || (a >= 0 && b < 0)){
+            alert(a+b);
+        }
+    }
+// Задание 4
+    function task4(){
+        var a = Math.round(Math.random()*16);
+        switch(a){
+            case 0: 
+                alert(a++);
+            case 1: 
+                alert(a++);
+            case 2: 
+                alert(a++);
+            case 3: 
+                alert(a++);
+            case 4: 
+                alert(a++);
+            case 5: 
+                alert(a++);
+            case 6: 
+                alert(a++);
+            case 7: 
+                alert(a++);
+            case 8: 
+                alert(a++);
+            case 9: 
+                alert(a++);
+            case 10: 
+                alert(a++);
+            case 11: 
+                alert(a++);
+            case 12: 
+                alert(a++);
+            case 13: 
+                alert(a++);
+            case 14: 
+                alert(a++);
+            case 15: 
+                alert(a);
+                break;
+        }
+    }
+// Задание 5
+    function sum(arg1, arg2){
+        return arg1 + arg2;
+    }
+
+    function subtraction(arg1, arg2){
+        return arg1 - arg2;
+    }
+
+    function multiply(arg1, arg2){
+        return arg1 * arg2;
+    }
+
+    function divide(arg1, arg2){
+        return arg1 / arg2;
+    }
+
+    //Задание 6.
+    function mathOperation(arg1, arg2, operation){
+        switch (operation){
+            case "sum": 
+                alert(sum(arg1,arg2));
+                break;
+            case "subtraction": 
+                alert(subtraction(arg1,arg2));
+                break;
+            case "multiply": 
+                alert(multiply(arg1,arg2));
+                break;
+            case "divide": 
+                alert(divide(arg1,arg2));
+                break;
+            default: alert('Wrong name of operation');
+                break;
+        }
+    }
+
+// Задание 7.
+    alert(typeof(0));
+    alert(typeof(null));
+    alert(0 ==  null); // будет false, потому что null - объект, а 0 - number, но если поставить +, перед null, то будет true, при преобразовании в number
+    
+// Задание 8.
+
+    function pow(value, power){
+        if ( power == 1){
+            return value;
+        }
+        else{
+            return value * pow(value, power - 1);
+        }
+    }
+    alert(pow(2,5));
+
+    </script>
+
+
+</html>
