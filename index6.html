@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style6.css">
+</head>
+
+<body>
+    <template id="template">
+        <div class="card">
+            <div class="divimg">
+                <img class="img">
+            </div>
+            <span class="name"></span>
+            <span class="price"></span>
+            <div class="button-group">
+                <button class="minus"></button>
+                <span class="count" id="lol">0</span>
+                <button class="button"></button>
+            </div>
+        </div>
+    </template>
+    <div id="catalog">
+        <div class="card head">
+            <span class="header-img">Фото</span>
+            <span class="name">Название</span>
+            <span class="price">Цена</span>
+            <span>Кол. товара</span>
+        </div>
+    </div>
+    <span id="currentSum">Корзина пуста</span>
+    <!-- Модальное окно, при клике на картинку -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close">×</button>
+                <h2>Товар</h2>
+            </div>
+            <div class="modal-body">
+                <img id = "modal-img">
+            </div>
+        </div>
+    </div>
+    <script src="lesson6.js" async></script>
+</body>
+
+</html>
