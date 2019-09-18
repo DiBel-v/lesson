@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "catalog"></div>
+    <script>
+        let $cat = document.querySelector('.catalog');
+        const goods = [
+            {name: 'Молоко', price: 70},
+            {name: 'Шоколад', price: 60},
+            {name: 'Мясо', price: 150},
+        ];
+        //Task2, Task3
+        const renderItem = ({name = 'Мыло', price = 3000 }) => `<div class = "item"><h3>${name}</h3><p>${price}</p></div>`;
+        const renderList = (items) => {
+            const renderedList = items.map(renderItem);;
+                Object.values(renderedList).forEach(element => {
+                console.log(element);
+                $cat.innerHTML += element;
+            });
+        }
+        renderList(goods);
+
+    </script>
+</body>
+</html>

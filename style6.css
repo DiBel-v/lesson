@@ -1,9 +1,8 @@
 body {
     padding: 0;
     margin: 0 auto;
-    width: 60%;
+    width: 70%;
 }
-
 .catalog {
     display: flex;
     flex-direction: column;
@@ -13,7 +12,6 @@ body {
     display: flex;
     padding: 10px;
     border-bottom: 1px solid lightblue;
-    border-right: 1px solid lightblue;
 }
 
 .card:first-child {
@@ -26,19 +24,23 @@ body {
 
 .name {
     flex: 0 0 8em;
-    margin: auto;
+    margin: auto 0;
 }
 
 .price {
     flex: 0 0 8em;
-    margin: auto;
+    margin: auto 0;
 }
 
 .count {
+    margin: auto 0;
     padding: 0 10px 0 10px;
 }
+.count-header {
+    margin: auto;
+}
 
-button {
+.button, .minus {
     background-color: white;
     border: 1px solid lightskyblue;
     border-radius: 50%;
@@ -140,4 +142,21 @@ button {
 }
 .modal-header h2{
     margin: 0 0 0 20px;
+}
+
+
+#bask{
+    border-radius: 5px;
+    border: 0px;
+    background-color: rgb(84, 159, 184);
+    color: #fff;
+    padding: 10px;
+    margin-right: 10px;
+}
+.div-bask{
+    margin-top: 10px;
+}
+.head{
+    font-style: italic;
+    font-family: Georgia;
 }

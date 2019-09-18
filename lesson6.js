@@ -4,6 +4,7 @@ var $currentSum = document.getElementById('currentSum');
 var $modal = document.getElementById('myModal');
 var $modalImg = document.getElementById('modal-img');
 var $close = document.getElementsByClassName("close")[0];
+var $calc = document.getElementById('bask');
 var iMoloko = ["./src/milk1.jpg", "./src/milk2.jpg", "./src/milk3.jpg"];
 var iMeat = ["./src/meat1.jpg", "./src/meat2.jpg", "./src/meat3.jpg"];
 var iChoco = ["./src/choco.jpg", "./src/choco1.jpg", "./src/choco2.jpg"];
@@ -84,9 +85,6 @@ function handleAddToBusket(product){
     sum = productsInBasket.reduce((acc,item) => {
         return acc + item.currentPrice;
     }, 0);
-    if (sum){
-        $currentSum.textContent = `Сумма покупок составит: ${sum}`;
-    }
 }
 
 //Обработчик событий при удалении продукта из корзины
@@ -101,11 +99,6 @@ function handleDeleteFromBusket(product){
                 sum = Math.abs(productsInBasket.reduce((acc,item) => {
                     return acc - item.currentPrice;
                 }, 0));
-                console.log(sum);
-            $currentSum.textContent = `Сумма покупок составит: ${sum}`;
-            }
-            if (sum === 0){
-                $currentSum.textContent = 'Корзина пуста';
             }
         }
     }
@@ -155,4 +148,6 @@ $close.onclick = function(){
     $modal.style.display = "none";
 }
 
+$calc.addEventListener('click', ()=>
+sum>0?$currentSum.textContent = `Сумма покупок составит: ${sum}`:$currentSum.textContent = 'Корзина пуста');
 getItems();
