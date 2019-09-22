@@ -151,3 +151,37 @@ $close.onclick = function(){
 $calc.addEventListener('click', ()=>
 sum>0?$currentSum.textContent = `Сумма покупок составит: ${sum}`:$currentSum.textContent = 'Корзина пуста');
 getItems();
+
+//Lesson 9
+//Task1,2
+function Basket(){
+    let size = 0; //Количество выбранных уникальных товаров
+    let currentSum = 0;
+    let products = [];
+}
+//products - массив содержит набор элементов класса Product
+Basket.prototype.addProduct = function(product){
+    //Добавить продукт в корзину, инкрементировать size
+}
+Basket.prototype.summarize = function(){
+    //Запись в currentSum всех выбранных продуктов
+}
+Basket.prototype.clear = function(){
+    //Очистить корзину
+}
+Basket.prototype.getProducts = function(){
+    //Получить все добавленные в корзину товары
+}
+
+function Product(name,price){
+    this.amount;
+    this.price = price;
+    this.name = name;
+}
+
+Product.prototype.incrementProd = function(){
+    //Инкриментировать amount
+}
+Product.prototype.decrementProd = function(){
+    //Декрементировать amount
+}
