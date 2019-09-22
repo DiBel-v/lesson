@@ -95,7 +95,6 @@
 
         function handleChoosedHumSize(sizeHum){
             choosedSize = sizeHum;
-            console.log(choosedSize);
         }
 
         arrToppings.forEach(element => {
@@ -122,7 +121,6 @@
 
         function handleChoosedTopping(topp){
             choosedStuf = topp;
-            console.log(choosedStuf);
         }
     }
         class Hamburger {
@@ -148,8 +146,6 @@
 
         $calc.addEventListener('click', handleCalc);
         function handleCalc(){
-            console.log(choosedStuf);
-        console.log(choosedSize);
             if (!choosedSize){
                 alert('Выберите размер бургера')
             } else if (!choosedStuf){
