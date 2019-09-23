@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id = "size-hum">
+    </div>
+    <span>Добавьте топпинг</span><br>
+    <div id = 'toppings'>
+    </div>
+    <div>
+        <button id = "calculate">Посчитать цену</button>
+    </div>
+
+    <script>
+        $calc = document.getElementById('calculate');
+        let arrHum = [
+            {
+                size: 'small',
+                price: 50,
+                calories: 20
+            },
+            {
+                size: 'big',
+                price: 100,
+                calories: 40
+            }
+        ];
+        let arrToppings = [
+            {
+                name: 'cheese',
+                price: 10,
+                calories: 20
+            },
+            {
+                name: 'salad',
+                price: 20,
+                calories: 5
+            },
+            {
+                name: 'potato',
+                price: 15,
+                calories: 10
+            },
+            {
+                name: 'spice',
+                price: 15,
+                calories: 0
+            },
+            {
+                name: 'mayonnaise',
+                price: 20,
+                calories: 5
+            }
+        ];
+        // Заполнить выбор гамбургера
+        $wrapHum = document.getElementById('size-hum');
+        $wrapTopping = document.getElementById('toppings');
+        let choosedSize;
+        let choosedStuf;
+        let getItems = function() { 
+            arrHum.forEach(element => {
+            let $rowHum = document.createElement('div');
+            let $sizeHum = document.createElement('span');
+            let $priceHum = document.createElement('span');
+            let $caloriesHum = document.createElement('span');
+            let $buyBut = document.createElement('button');
+            $buyBut.className = 'buyBut';
+            $buyBut.textContent = 'Купить';
+            $sizeHum.className = 'sizeHum';
+            $priceHum.className = 'priceHum';
+            $caloriesHum.className = 'caloriesHum';
+            $rowHum.id = element.size;
+            if( element.size === 'small'){
+                $sizeHum.textContent = `Размер: маленький бургер`;
+            } else if (element.size === 'big'){
+                $sizeHum.textContent = `Размер: большой бургер`;
+            }
+            $priceHum.textContent = `Цена: ${element.price} рублей`;
+            $caloriesHum.textContent = `Каллорий: ${element.calories}`;
+            $buyBut.addEventListener('click', handleChoosedHumSize.bind(null,element));
+            $rowHum.appendChild($sizeHum);
+            $rowHum.appendChild($priceHum);
+            $rowHum.appendChild($caloriesHum);
+            $rowHum.appendChild($buyBut);
+            $wrapHum.appendChild($rowHum);
+        });
+
+        function handleChoosedHumSize(sizeHum){
+            choosedSize = sizeHum;
+        }
+
+        arrToppings.forEach(element => {
+            let $rowTop = document.createElement('div');
+            let $nameTop = document.createElement('span');
+            let $priceTop = document.createElement('span');
+            let $caloriesTop = document.createElement('span');
+            let $buyBut = document.createElement('button');
+            $buyBut.className = 'buyBut';
+            $buyBut.textContent = 'Купить';
+            $nameTop.className = 'nameTop';
+            $priceTop.className = 'priceTop';
+            $caloriesTop.className = 'caloriesTop';
+            $rowTop.id = element.name;
+            $priceTop.textContent = `Цена: ${element.price} рублей`;
+            $caloriesTop.textContent = `Каллорий: ${element.calories}`;
+            $buyBut.addEventListener('click', handleChoosedTopping.bind(null,element));
+            $rowTop.appendChild($nameTop);
+            $rowTop.appendChild($priceTop);
+            $rowTop.appendChild($caloriesTop);
+            $rowTop.appendChild($buyBut);
+            $wrapTopping.appendChild($rowTop);
+        });
+
+        function handleChoosedTopping(topp){
+            choosedStuf = topp;
+        }
+    }
+        class Hamburger {
+            constructor(sizeHum, stuffing) { 
+                this.sizeHum = sizeHum; 
+                this.stuffing = stuffing; 
+            }
+            getSize() {
+                 return this.sizeHum.size;
+                }
+            getStuffing() { 
+                return this.stuffing.name;
+            }
+            calculatePrice() { 
+                return this.stuffing.price + this.sizeHum.price;
+            }
+            calculateCalories() {
+                return this.stuffing.calories + this.sizeHum.calories;
+            }
+        }
+        alert('Кликните на бургер, который хотите купить и начинку.');
+        getItems();
+
+        $calc.addEventListener('click', handleCalc);
+        function handleCalc(){
+            if (!choosedSize){
+                alert('Выберите размер бургера')
+            } else if (!choosedStuf){
+                alert('Выберите начинку');
+            } else {
+                let choosedHum = new Hamburger(choosedSize, choosedStuf);
+                alert(choosedHum.calculatePrice());
+            }
+        }
+    </script>
+</body>
+
+</html>
