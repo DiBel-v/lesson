@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p id="bigpar"></p>
+    <script>
+        //Поменять кавычки (задание 4)
+        $but = document.createElement('button');
+        $but.textContent = "Поменять кавычки";
+        document.querySelector('body').appendChild($but);
+        $but.addEventListener('click', handleChangeText);
+        let textToChange;
+        $par = document.getElementById('bigpar');
+        $par.textContent = `She said: 'A can't stand here for all night'`;
+        const regexp = /^'|(\s)'|'(\s)|'$/g;
+        function handleChangeText(){
+            $par.textContent = $par.textContent.replace(regexp,'"');
+        }
+    </script>
+</body>
+</html>

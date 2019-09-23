@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .form-reg{
+            text-align: center;
+            margin: 0 auto;
+        }
+        input[type="text"]{
+            border: 1px solid lightgray;
+            padding: 5px;
+            border-radius: 5px;
+            line-height: 25px;
+            width: 250px;
+            margin-bottom: 10px;
+        }
+        .false{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form name = "" class = "form-reg">
+        <input type="text" placeholder="Имя" id="fio"><br>
+        <input type="text" placeholder="Телефон" id="phone"><br>
+        <input type="text" placeholder="Email" id="email"><br>
+        <textarea placeholder="Свободный текст" id="free-text"></textarea><br>
+        <input type="button" id="subm" value="Отправить">
+    </form>
+
+    <script>
+        $fio = document.getElementById('fio');
+        $phone = document.getElementById('phone');
+        $email = document.getElementById('email');
+        $subm = document.getElementById('subm');
+        $subm.addEventListener('click', handleOnCheck);
+        let regfio = /^[a-zA-Zа-яА-Я]+$/g;
+        let regphone = /^\+\d\(\d{3}\)\d{3}-\d{2}\d{2}$/g;
+        let regemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
+        console.log(regfio);
+
+        
+        function handleOnCheck(){
+            console.log(regfio.test($fio.value));
+            if( !regfio.test($fio.value) ){
+                $fio.style.border = "1px solid red";
+                alert('В имени можно использовать только буквы');
+            }
+            if( !regphone.test($phone.value) ){
+                $phone.style.border = "1px solid red";
+                alert('Тип номера должен быть: +7(999)999-9999');
+            }
+            if( !regemail.test($email.value) ){
+                $email.style.border = "1px solid red";
+                alert('Неверный формат email');
+            }
+                
+        }
+    </script>
+</body>
+
+</html>
