@@ -1,0 +1,7 @@
+<input id="inp" type="text" [(ngModel)]="todoText" placeholder="Например, покормить кота">
+<button (click)="addTask(todoText)">Добавить в задачи</button>
+<ul *ngFor="let item of todoList; let i = index">
+  <div class="item-block">
+    <li>{{item.task}}</li><button class="deleteBut" (click)="deleteTask(i)">Удалить задачу</button>
+  </div>
+</ul>
