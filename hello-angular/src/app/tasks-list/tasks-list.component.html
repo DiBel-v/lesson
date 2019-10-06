@@ -1,0 +1,11 @@
+<ul *ngIf="items.length; else nothing">
+    <li *ngFor="let item of items" (click)="makeActive(item)" [class.active]="selectedItem === item">
+        <a [routerLink]="['/tasks', item.id]">{{item.name}}</a>
+        <span [ngSwitch] = "item.status">
+            <span *ngSwitchCase="0">Завершена</span>
+            <span *ngSwitchCase="1">Не завершена</span>
+            <span *ngSwitchCase="2">Провалена</span>
+        </span>
+    </li>
+</ul>
+<ng-template #nothing>На сегодня задач нет!</ng-template>
