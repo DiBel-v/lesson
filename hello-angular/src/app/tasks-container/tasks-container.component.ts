@@ -1,34 +1,18 @@
+import { TaskService } from './../task.service';
 import { Component, OnInit } from '@angular/core';
 import { Task, TaskStatus } from '../task';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tasks-container',
-  template: `<app-tasks-list [items]="tasks"></app-tasks-list>`
+  template: `<app-tasks-list [items]="tasks | async"></app-tasks-list>`
 })
 export class TasksContainerComponent implements OnInit {
-  private tasks: Task[] = [
-    {
-      id: 1,
-      name: 'Погулять',
-      created: new Date(),
-      status: TaskStatus.Failed
-    },
-    {
-      id: 2,
-      name: 'Приготовить ужин',
-      created: new Date(),
-      status: TaskStatus.Uncompleted
-    },
-    {
-      id: 3,
-      name: 'Постирать',
-      created: new Date(),
-      status: TaskStatus.Completed
-    },
-  ];
-  constructor() { }
+  public tasks: Observable<Task[]>;
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
+    this.tasks = this.taskService.getAllData();
   }
 
 }

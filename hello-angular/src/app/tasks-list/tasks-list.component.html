@@ -1,10 +1,15 @@
-<ul *ngIf="items.length; else nothing">
+<label>Введите название задачи </label>
+<input type="text" placeholder="Позавтракать" [(ngModel)]="newTaskTxt">
+<button (click)="create(newTaskTxt)">Добавить задачу</button>
+<ul *ngIf="items?.length; else nothing">
     <li *ngFor="let item of items" (click)="makeActive(item)" [class.active]="selectedItem === item">
-        <a [routerLink]="['/tasks', item.id]">{{item.name}}</a>
+        <a [routerLink]="['/tasks', item.id]" (click)="makeActive(item)">{{item.name}}</a>
+        <button class="delete-button" (click)="deleteTask(item.id)">Удалить</button>
+        <br>
         <span [ngSwitch] = "item.status">
             <span *ngSwitchCase="0">Завершена</span>
             <span *ngSwitchCase="1">Не завершена</span>
-            <span *ngSwitchCase="2">Провалена</span>
+            <span *ngSwitchCase="2">Потрачено</span>
         </span>
     </li>
 </ul>

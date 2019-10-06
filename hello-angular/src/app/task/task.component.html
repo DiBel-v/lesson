@@ -1,1 +1,12 @@
+<div *ngIf = "item">
 <h3>{{item.name}}</h3>
+<input type="text" [(ngModel)]="item.name">
+<button (click)="save(item.id, item)">Сохранить изменения</button>
+<span [ngSwitch] = "item.status">
+    <span *ngSwitchCase="0">Завершена</span>
+    <span *ngSwitchCase="1">Не завершена</span>
+    <span *ngSwitchCase="2">Потрачено</span>
+</span>
+<br>
+<button (click)="goBack()">Вернуться</button>
+</div>
