@@ -9,7 +9,7 @@ import { TaskComponent } from './task/task.component';
 import { TasksListComponent } from './tasks-list/tasks-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -24,8 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    HttpClientModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
