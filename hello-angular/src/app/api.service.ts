@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface GenericService<T> {
-  getAllData(): Observable<T[]>;
+  getAllData?(): Observable<T[]>;
   get(id: number): Observable<T>;
   create(task: T): Observable<T>;
   deleteTask(id: number): Observable<T>;
@@ -23,7 +23,7 @@ export class ApiService<T> {
   get(path: string, id: number): Observable<T> {
     return this.http.get<T>(`${ApiService.API_URL}/${path}/${id}`);
   }
-  create(path: string, task: T): Observable<T> {
+  create(path: string, task: Partial<T>): Observable<T> {
     return this.http.post<T>(`${ApiService.API_URL}/${path}`, task);
   }
   deleteTask(path: string, id: number): Observable<T> {

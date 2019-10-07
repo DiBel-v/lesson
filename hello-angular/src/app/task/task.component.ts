@@ -15,7 +15,6 @@ export class TaskComponent implements OnInit {
   ngOnInit() {
   }
   save(id: number, item: Task) {
-    console.log(item);
     this.taskService.updateTask(id, item).subscribe(() => this.goBack());
   }
   goBack(): void {
