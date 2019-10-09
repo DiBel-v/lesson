@@ -12,7 +12,7 @@ export class TasksContainerComponent implements OnInit {
   constructor(private taskService: TaskService) { }
 
   ngOnInit() {
-    this.tasks = this.taskService.getAllData();
+    this.tasks = this.taskService.tasks;
   }
 
 }

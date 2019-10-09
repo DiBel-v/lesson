@@ -1,6 +1,4 @@
-<label>Введите название задачи </label>
-<input type="text" placeholder="Позавтракать" [(ngModel)]="newTaskTxt">
-<button (click)="create(newTaskTxt)">Добавить задачу</button>
+<button [routerLink]="['/tasks', 'create']">+</button>Создать задачу
 <ul *ngIf="items?.length; else nothing">
     <li *ngFor="let item of items" (click)="makeActive(item)" [class.active]="selectedItem === item">
         <a [routerLink]="['/tasks', item.id]" (click)="makeActive(item)">{{item.name}}</a>
