@@ -13,7 +13,7 @@ export class CreateTaskComponent implements OnInit {
   public checkoutForm;
   constructor(private taskService: TaskService, private router: Router, private formBuilder: FormBuilder) { 
     this.checkoutForm = this.formBuilder.group({
-      name: ''
+      name: new FormControl('', [Validators.required, Validators.minLength(3)])
   });
   }
 
