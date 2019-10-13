@@ -11,13 +11,13 @@ export class TaskService {
   private _tasks: BehaviorSubject<Task[]> = new BehaviorSubject([]);
   public readonly tasks: Observable<Task[]> = this._tasks.asObservable();
 
-  constructor(private apiService: ApiService<Task>) { 
+  constructor(private apiService: ApiService<Task>) {
     this.getAllData().subscribe((tasks: Task[]) => {
       console.log(tasks);
       this._tasks.next(tasks);
     });
   }
-  private getAllData(): Observable<Task[]> {
+  public getAllData(): Observable<Task[]> {
     return this.apiService.getAllData('tasks');
   }
   create(task: Partial<Task>): Observable<Task> {
@@ -56,6 +56,7 @@ export class TaskService {
     return response$;
   }
   get(id: number): Observable<Task> {
+    console.log(id);
     return this.apiService.get('tasks', id);
   }
 }

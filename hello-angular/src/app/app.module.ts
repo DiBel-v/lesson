@@ -12,6 +12,10 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { TasksEffects } from './tasks.effects';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,9 @@ import { CreateTaskComponent } from './create-task/create-task.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([TasksEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]
