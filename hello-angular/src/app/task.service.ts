@@ -17,7 +17,7 @@ export class TaskService {
       this._tasks.next(tasks);
     });
   }
-  private getAllData(): Observable<Task[]> {
+  public getAllData(): Observable<Task[]> {
     return this.apiService.getAllData('tasks');
   }
   create(task: Partial<Task>): Observable<Task> {
@@ -56,6 +56,7 @@ export class TaskService {
     return response$;
   }
   get(id: number): Observable<Task> {
+    console.log(id);
     return this.apiService.get('tasks', id);
   }
 }
