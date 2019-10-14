@@ -1,12 +1,31 @@
-<div *ngIf = "item">
+<div *ngIf = "checkoutForm">
 <h3>{{item.name}}</h3>
-<input type="text" [(ngModel)]="item.name">
-<button (click)="save(item.id, item)">Сохранить изменения</button>
-<span [ngSwitch] = "item.status">
-    <span *ngSwitchCase="0">Завершена</span>
-    <span *ngSwitchCase="1">Не завершена</span>
-    <span *ngSwitchCase="2">Потрачено</span>
-</span>
+<form [formGroup]="checkoutForm" (ngSubmit)="save(checkoutForm.value, item.id, item)">
+    <div class="form-group">
+        <label for="name">Название задачи</label>
+        <input type="text" name="name" [value]="item.name"  formControlName="name">
+        <div *ngIf="checkoutForm.controls['name'].errors?.required">Это обязательное поле</div>
+        <div *ngIf="checkoutForm.controls['name'].errors?.minlength">Количество символов должно быть больше 3</div>
+        <div> Статус: 
+            <input type="radio" id="Completed"
+                   name="status" value="0" [checked]="item.status === 0" formControlName="status">
+            <label for="Completed">Завершена</label>
+            <input type="radio" id="Uncompleted"
+                   name="status" value="1" [checked]="item.status === 1" formControlName="status">
+            <label for="Uncompleted">Не завершена</label>
+            <input type="radio" id="Failed"
+                   name="status" value="2" [checked]="item.status === 2" formControlName="status">
+            <label for="Failed">Провалена</label>
+        </div>
+        <div *ngIf="checkoutForm.controls['status'].value === '0'"> Введите комментарий:
+            <br>
+            <textarea [value]="item.message ? item.message : ''" name="message" id="message" cols="30" rows="5" formControlName="message"></textarea>
+        </div>
+    </div>
+    <button [disabled]="!checkoutForm.valid" type="submit" class="btn btn-default">Сохранить изменения</button>
+</form>
+<br>
+
 <br>
 <button (click)="goBack()">Вернуться</button>
 </div>

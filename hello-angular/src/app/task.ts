@@ -3,6 +3,7 @@ export interface Task {
     name: string;
     created: Date;
     status: TaskStatus;
+    message?: string;
 }
 export enum TaskStatus {
     Completed,

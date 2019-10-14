@@ -13,7 +13,6 @@ import {map, switchMap} from 'rxjs/operators';
 })
 export class TaskContainterComponent implements OnInit {
   public task: Observable<Task>;
-  // @Output() public item: Task;
   constructor(private taskService: TaskService, private route: ActivatedRoute) { }
 
   ngOnInit() {

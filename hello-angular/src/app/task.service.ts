@@ -11,7 +11,7 @@ export class TaskService {
   private _tasks: BehaviorSubject<Task[]> = new BehaviorSubject([]);
   public readonly tasks: Observable<Task[]> = this._tasks.asObservable();
 
-  constructor(private apiService: ApiService<Task>) { 
+  constructor(private apiService: ApiService<Task>) {
     this.getAllData().subscribe((tasks: Task[]) => {
       console.log(tasks);
       this._tasks.next(tasks);

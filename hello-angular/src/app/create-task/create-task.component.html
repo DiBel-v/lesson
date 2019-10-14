@@ -2,6 +2,8 @@
     <div class="form-group">
         <label for="name">Название задачи</label>
         <input type="text" name="name" formControlName="name">
+        <div *ngIf="(checkoutForm.controls['name'].touched || checkoutForm.controls['name'].dirty) && checkoutForm.controls['name'].errors?.required">Это обязательное поле</div>
+        <div *ngIf="(checkoutForm.controls['name'].touched || checkoutForm.controls['name'].dirty) && checkoutForm.controls['name'].errors?.minlength">Количество символов должно быть больше 3</div>
     </div>
-     <button type="submit" class="btn btn-default">Создать задачу</button>
+     <button [disabled]="!checkoutForm.valid" type="submit" class="btn btn-default">Создать задачу</button>
 </form>
